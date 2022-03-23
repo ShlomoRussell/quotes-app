@@ -1,4 +1,3 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
@@ -10,6 +9,9 @@ function NavHeader() {
       </Link>
       <Link className="m-1 link-light text-decoration-none" to="Authors">
         Authors
+      </Link>
+      <Link className="m-1 link-light text-decoration-none" to="AddQuote">
+        Add-Quote
       </Link>
     </nav>
   );

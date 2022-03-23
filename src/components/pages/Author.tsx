@@ -1,15 +1,18 @@
-type authorProps = {
-  quotes: string[] | never[]
-  name:string
-}
+import { useParams } from "react-router-dom";
 
-
-function Author(props: authorProps) {
+function Author(props: { data: any[] }) {
+  console.log(props.data)
+  const { name } = useParams();
+ 
+  const quotesArray = props.data
+    .filter((q: any) => q.by.name === name?.replaceAll("-", " "))
+    .map((q: any) => q.quote);
+  
   return (
     <>
-      <h4>Quotes from {props.name}</h4>
+      <h4>Quotes from {name?.replaceAll("-", " ")}</h4>
       <ul>
-        {props.quotes.map((q, i) => (
+        {quotesArray.map((q, i) => (
           <li key={i}>{q}</li>
         ))}
       </ul>
@@ -17,4 +20,4 @@ function Author(props: authorProps) {
   );
 }
 
-export default Author
+export default Author;
